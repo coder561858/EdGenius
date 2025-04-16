@@ -47,7 +47,7 @@ const Hero = () => {
 					transition={{ duration: 1 }}
 					className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-500 text-transparent bg-clip-text"
 				>
-					Learn. Earn. Own.
+					Learn. Grow. conquer.
 				</motion.h1>
 
 				<motion.p

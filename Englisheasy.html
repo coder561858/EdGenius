@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles4.css" />
+  <link rel="icon" type="image/png" href="" />
+  <title>English Quiz</title>
+</head>
+<body>
+  <div class="container">
+    <div class="question-page" id="question1">
+      <h1>Question 1: Choose the correct synonym for "happy".</h1>
+      <form>
+        <label><input type="radio" name="q1" value="1"> Sad</label><br />
+        <label><input type="radio" name="q1" value="2"> Joyful</label><br />
+        <label><input type="radio" name="q1" value="3"> Angry</label><br />
+        <label><input type="radio" name="q1" value="4"> Nervous</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+      <p class="hint" id="hint1" style="display:none;">It's an emotion similar to being cheerful.</p>
+      <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question2" style="display:none;">
+      <h1>Question 2: Identify the verb in this sentence: "She runs every morning."</h1>
+      <form>
+        <label><input type="radio" name="q2" value="1"> She</label><br />
+        <label><input type="radio" name="q2" value="2"> Runs</label><br />
+        <label><input type="radio" name="q2" value="3"> Every</label><br />
+        <label><input type="radio" name="q2" value="4"> Morning</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
+      <p class="hint" id="hint2" style="display:none;">A verb shows an action or state.</p>
+      <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question3" style="display:none;">
+      <h1>Question 3: What is the antonym of "strong"?</h1>
+      <form>
+        <label><input type="radio" name="q3" value="1"> Bold</label><br />
+        <label><input type="radio" name="q3" value="2"> Weak</label><br />
+        <label><input type="radio" name="q3" value="3"> Brave</label><br />
+        <label><input type="radio" name="q3" value="4"> Healthy</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
+      <p class="hint" id="hint3" style="display:none;">It means the opposite of powerful.</p>
+      <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question4" style="display:none;">
+      <h1>Question 4: Which sentence is grammatically correct?</h1>
+      <form>
+        <label><input type="radio" name="q4" value="1"> He go to school every day.</label><br />
+        <label><input type="radio" name="q4" value="2"> He goes to school every day.</label><br />
+        <label><input type="radio" name="q4" value="3"> He going to school every day.</label><br />
+        <label><input type="radio" name="q4" value="4"> He gone to school every day.</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
+      <p class="hint" id="hint4" style="display:none;">Subject-verb agreement is important!</p>
+      <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question5" style="display:none;">
+      <h1>Question 5: What is a noun?</h1>
+      <form>
+        <label><input type="radio" name="q5" value="1"> A naming word</label><br />
+        <label><input type="radio" name="q5" value="2"> A doing word</label><br />
+        <label><input type="radio" name="q5" value="3"> A describing word</label><br />
+        <label><input type="radio" name="q5" value="4"> A connecting word</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
+      <p class="hint" id="hint5" style="display:none;">It can be a person, place, or thing.</p>
+      <button class="next-button" onclick="finishQuiz()">Finish</button>
+    </div>
+  </div>
+
+  <div class="question-page" id="result" style="display:none;">
+    <h1>Quiz Completed!</h1>
+    <p>Your score is: <span id="score-display"></span>/5</p>
+  </div>
+
+  <script>
+    let score = 0;
+
+    function showHint(hintId) {
+      document.getElementById(hintId).style.display = 'block';
+    }
+
+    function nextQuestion(questionNumber) {
+      const prevQuestion = questionNumber - 1;
+      const selected = document.querySelector(`input[name="q${prevQuestion}"]:checked`);
+      if (prevQuestion > 0 && !selected) {
+        alert("Please select an answer before proceeding.");
+        return;
+      }
+
+      if (selected) {
+        if (selected.value === "2" && prevQuestion === 1) score++;
+        if (selected.value === "2" && prevQuestion === 2) score++;
+        if (selected.value === "2" && prevQuestion === 3) score++;
+        if (selected.value === "2" && prevQuestion === 4) score++;
+        if (selected.value === "1" && prevQuestion === 5) score++;
+      }
+
+      const pages = document.querySelectorAll('.question-page');
+      pages.forEach(page => page.style.display = 'none');
+      const nextPage = document.getElementById('question' + questionNumber);
+      if (nextPage) {
+        nextPage.style.display = 'block';
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      const container = document.querySelector('.container');
+      container.innerHTML = `
+        <h1>Quiz Completed!</h1>
+        <p>Your score is: <span id="score-display">${score}</span>/5</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+

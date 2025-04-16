@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #111827, #1f2937, #000000); /* Matches Hero gradient */
+    color: #e0f7fa;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Decorative blur elements just like Hero */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 9999px;
+    filter: blur(120px);
+    opacity: 0.2;
+    z-index: 0;
+}
+body::before {
+    top: -120px;
+    right: -120px;
+    background: #8b5cf6; /* Purple-ish glow */
+}
+body::after {
+    bottom: -120px;
+    left: -120px;
+    background: #3b82f6; /* Blue-ish glow */
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 0 25px rgba(0, 255, 200, 0.15);
+    z-index: 1;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #67e8f9;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.hint-button, .next-button, .home-button {
+    background-image: linear-gradient(to right, #22c55e, #3b82f6); /* Green to blue gradient */
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin: 12px 8px;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: opacity 0.3s ease;
+}
+
+.hint-button:hover, .next-button:hover, .home-button:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles5.css" />
+  <link rel="icon" type="image/png" href="" />
+  <title>English Quiz</title>
+</head>
+<body>
+  <div class="container">
+    <div class="timer" id="timer">Thanks for taking the quiz!!</div>
+
+    <div class="question-page" id="question1">
+      <h1>Question 1: What is the synonym of “Happy”?</h1>
+      <form>
+        <label><input type="radio" name="q1" value="1"> Joyful</label><br>
+        <label><input type="radio" name="q1" value="2"> Angry</label><br>
+        <label><input type="radio" name="q1" value="3"> Sad</label><br>
+        <label><input type="radio" name="q1" value="4"> Bored</label><br>
+      </form>
+      <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+      <p class="hint" id="hint1" style="display:none;">It means feeling great delight or pleasure.</p>
+      <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question2" style="display:none;">
+      <h1>Question 2: Choose the correctly spelled word:</h1>
+      <form>
+        <label><input type="radio" name="q2" value="1"> Acheivement</label><br>
+        <label><input type="radio" name="q2" value="2"> Achiement</label><br>
+        <label><input type="radio" name="q2" value="3"> Achievement</label><br>
+        <label><input type="radio" name="q2" value="4"> Acheivment</label><br>
+      </form>
+      <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
+      <p class="hint" id="hint2" style="display:none;">It's often misspelled but contains “ie” in the middle.</p>
+      <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question3" style="display:none;">
+      <h1>Question 3: What is the antonym of “Generous”?</h1>
+      <form>
+        <label><input type="radio" name="q3" value="1"> Kind</label><br>
+        <label><input type="radio" name="q3" value="2"> Selfish</label><br>
+        <label><input type="radio" name="q3" value="3"> Giving</label><br>
+        <label><input type="radio" name="q3" value="4"> Helpful</label><br>
+      </form>
+      <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
+      <p class="hint" id="hint3" style="display:none;">It refers to someone who doesn’t like sharing.</p>
+      <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question4" style="display:none;">
+      <h1>Question 4: Which sentence is in the past tense?</h1>
+      <form>
+        <label><input type="radio" name="q4" value="1"> She will go to school.</label><br>
+        <label><input type="radio" name="q4" value="2"> She is going to school.</label><br>
+        <label><input type="radio" name="q4" value="3"> She goes to school.</label><br>
+        <label><input type="radio" name="q4" value="4"> She went to school.</label><br>
+      </form>
+      <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
+      <p class="hint" id="hint4" style="display:none;">Look for the verb form that tells a completed action.</p>
+      <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question5" style="display:none;">
+      <h1>Question 5: What part of speech is the word “quickly”?</h1>
+      <form>
+        <label><input type="radio" name="q5" value="1"> Noun</label><br>
+        <label><input type="radio" name="q5" value="2"> Adjective</label><br>
+        <label><input type="radio" name="q5" value="3"> Verb</label><br>
+        <label><input type="radio" name="q5" value="4"> Adverb</label><br>
+      </form>
+      <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
+      <p class="hint" id="hint5" style="display:none;">It describes *how* an action is done.</p>
+      <button class="next-button" onclick="finishQuiz()">Finish</button>
+    </div>
+  </div>
+
+  <script>
+    let score = 0;
+    let timeLeft = 20;
+    let timer;
+
+    function startTimer() {
+      clearInterval(timer);
+      timeLeft = 20;
+      document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          alert("Time's up! Please select an answer.");
+        }
+      }, 1000);
+    }
+
+    function showHint(hintId) {
+      document.getElementById(hintId).style.display = 'block';
+    }
+
+    function nextQuestion(questionNumber) {
+      const currentQuestion = questionNumber - 1;
+      const selected = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+      if (!selected) {
+        alert("Please select an answer before proceeding.");
+        return;
+      }
+
+      if ((currentQuestion === 1 && selected.value === "1") || // Joyful
+          (currentQuestion === 2 && selected.value === "3") || // Achievement
+          (currentQuestion === 3 && selected.value === "2") || // Selfish
+          (currentQuestion === 4 && selected.value === "4") || // She went...
+          (currentQuestion === 5 && selected.value === "4")) { // Adverb
+        score++;
+      }
+
+      const pages = document.querySelectorAll('.question-page');
+      pages.forEach(page => page.style.display = 'none');
+
+      const nextPage = document.getElementById('question' + questionNumber);
+      if (nextPage) {
+        nextPage.style.display = 'block';
+        startTimer();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      clearInterval(timer);
+      const container = document.querySelector('.container');
+      container.innerHTML = `
+        <h1>Quiz Completed!</h1>
+        <p>Your score is: <span id="score-display">${score}</span>/5</p>
+      `;
+    }
+
+    function restartQuiz() {
+      score = 0;
+      const container = document.querySelector('.container');
+      container.innerHTML = `
+        <div id="timer">Time left: 20s</div>
+        <div class="question-page" id="question1">
+          <h1>Question 1: What is the synonym of “Happy”?</h1>
+          <form>
+            <label><input type="radio" name="q1" value="1"> Joyful</label><br>
+            <label><input type="radio" name="q1" value="2"> Angry</label><br>
+            <label><input type="radio" name="q1" value="3"> Sad</label><br>
+            <label><input type="radio" name="q1" value="4"> Bored</label><br>
+          </form>
+          <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+          <p class="hint" id="hint1" style="display:none;">It means feeling great delight or pleasure.</p>
+          <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+        </div>
+      `;
+      startTimer();
+    }
+
+    startTimer();
+  </script>
+</body>
+</html>

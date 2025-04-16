@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Quiz</title>
+    <link rel="stylesheet" href="styles5.css">
+    <link rel="icon" type="image/png" href="">
+</head>
+<body>
+    <div class="container">
+        <div id="timer" style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">Time left: 30s</div>
+
+        <div class="question-page" id="question1">
+            <h1>Question 1: What does the German word “Fernweh” mean?</h1>
+            <form>
+                <label><input type="radio" name="q1" value="1"> Homesickness</label><br>
+                <label><input type="radio" name="q1" value="2"> Fear of strangers</label><br>
+                <label><input type="radio" name="q1" value="3"> Longing to travel</label><br>
+                <label><input type="radio" name="q1" value="4"> Daydreaming</label><br>
+            </form>
+            <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+            <p class="hint" id="hint1" style="display:none;">It's the opposite of homesickness.</p>
+            <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+        </div>
+
+        <div class="question-page" id="question2" style="display:none;">
+            <h1>Question 2: What is the correct plural of “Kind” (child) in German?</h1>
+            <form>
+                <label><input type="radio" name="q2" value="1"> Kinden</label><br>
+                <label><input type="radio" name="q2" value="2"> Kinder</label><br>
+                <label><input type="radio" name="q2" value="3"> Kinds</label><br>
+                <label><input type="radio" name="q2" value="4"> Kinders</label><br>
+            </form>
+            <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
+            <p class="hint" id="hint2" style="display:none;">Think of the word used in “Kindergarten”.</p>
+            <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
+        </div>
+
+        <div class="question-page" id="question3" style="display:none;">
+            <h1>Question 3: Which of the following is a dative preposition in German?</h1>
+            <form>
+                <label><input type="radio" name="q3" value="1"> durch</label><br>
+                <label><input type="radio" name="q3" value="2"> gegen</label><br>
+                <label><input type="radio" name="q3" value="3"> mit</label><br>
+                <label><input type="radio" name="q3" value="4"> ohne</label><br>
+            </form>
+            <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
+            <p class="hint" id="hint3" style="display:none;">This one means "with".</p>
+            <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
+        </div>
+
+        <div class="question-page" id="question4" style="display:none;">
+            <h1>Question 4: What is the correct translation for “I have eaten” in German?</h1>
+            <form>
+                <label><input type="radio" name="q4" value="1"> Ich esse</label><br>
+                <label><input type="radio" name="q4" value="2"> Ich gegessen</label><br>
+                <label><input type="radio" name="q4" value="3"> Ich habe gegessen</label><br>
+                <label><input type="radio" name="q4" value="4"> Ich habe esse</label><br>
+            </form>
+            <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
+            <p class="hint" id="hint4" style="display:none;">Use perfect tense with “haben”.</p>
+            <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
+        </div>
+
+        <div class="question-page" id="question5" style="display:none;">
+            <h1>Question 5: What gender is the German noun “Mädchen” (girl)?</h1>
+            <form>
+                <label><input type="radio" name="q5" value="1"> Der (masculine)</label><br>
+                <label><input type="radio" name="q5" value="2"> Die (feminine)</label><br>
+                <label><input type="radio" name="q5" value="3"> Das (neuter)</label><br>
+                <label><input type="radio" name="q5" value="4"> Den (accusative)</label><br>
+            </form>
+            <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
+            <p class="hint" id="hint5" style="display:none;">It’s grammatically neutral due to the ending “-chen”.</p>
+            <button class="next-button" onclick="finishQuiz()">Finish</button>
+        </div>
+    </div>
+
+    <script>
+let score = 0;
+let timeLeft = 30;
+let timer;
+
+function startTimer(questionNumber) {
+    timeLeft = 30;
+    document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            alert("Time's up! Please select an answer before proceeding.");
+        }
+    }, 1000);
+}
+
+function showHint(hintId) {
+    document.getElementById(hintId).style.display = 'block';
+}
+
+function nextQuestion(questionNumber) {
+    clearInterval(timer);
+    const currentQuestion = questionNumber - 1;
+    const selected = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+    if (!selected) {
+        alert("Please select an answer before moving to the next question.");
+        startTimer(currentQuestion);
+        return;
+    }
+
+    const pages = document.querySelectorAll('.question-page');
+    pages.forEach(page => page.style.display = 'none');
+    const nextPage = document.getElementById('question' + questionNumber);
+    if (nextPage) {
+        nextPage.style.display = 'block';
+    }
+
+    if ((currentQuestion === 1 && selected.value === "3") || // Fernweh
+        (currentQuestion === 2 && selected.value === "2") || // Kinder
+        (currentQuestion === 3 && selected.value === "3") || // mit
+        (currentQuestion === 4 && selected.value === "3") || // Ich habe gegessen
+        (currentQuestion === 5 && selected.value === "3")) { // Das (Mädchen)
+        score++;
+    }
+
+    startTimer(questionNumber);
+}
+
+function finishQuiz() {
+    clearInterval(timer);
+    const container = document.querySelector('.container');
+    container.innerHTML = `
+        <h1>Quiz Completed!</h1>
+        <p>Your score is: <span id="score-display">${score}</span>/5</p>
+    `;
+}
+
+startTimer(1);
+    </script>
+</body>
+</html>

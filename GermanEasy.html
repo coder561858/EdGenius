@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles4.css" />
+  <link rel="icon" type="image/png" href="" />
+  <title>German Quiz</title>
+</head>
+<body>
+  <div class="container">
+    <div class="question-page" id="question1">
+      <h1>Question 1: What do we call "Hello" in German?</h1>
+      <form>
+        <label><input type="radio" name="q1" value="1"> Danke</label><br />
+        <label><input type="radio" name="q1" value="2"> Hallo</label><br />
+        <label><input type="radio" name="q1" value="3"> Tschüss</label><br />
+        <label><input type="radio" name="q1" value="4"> Bitte</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+      <p class="hint" id="hint1" style="display:none;">It sounds similar to the English word!</p>
+      <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question2" style="display:none;">
+      <h1>Question 2: How do you say "Thank you" in German?</h1>
+      <form>
+        <label><input type="radio" name="q2" value="1"> Hallo</label><br />
+        <label><input type="radio" name="q2" value="2"> Danke</label><br />
+        <label><input type="radio" name="q2" value="3"> Guten Morgen</label><br />
+        <label><input type="radio" name="q2" value="4"> Nein</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
+      <p class="hint" id="hint2" style="display:none;">You say it when you're grateful.</p>
+      <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question3" style="display:none;">
+      <h1>Question 3: What does "Tschüss" mean in English?</h1>
+      <form>
+        <label><input type="radio" name="q3" value="1"> Please</label><br />
+        <label><input type="radio" name="q3" value="2"> Goodbye</label><br />
+        <label><input type="radio" name="q3" value="3"> Hello</label><br />
+        <label><input type="radio" name="q3" value="4"> Yes</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
+      <p class="hint" id="hint3" style="display:none;">You say it when leaving someone.</p>
+      <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question4" style="display:none;">
+      <h1>Question 4: What is the German word for "Good morning"?</h1>
+      <form>
+        <label><input type="radio" name="q4" value="1"> Gute Nacht</label><br />
+        <label><input type="radio" name="q4" value="2"> Guten Morgen</label><br />
+        <label><input type="radio" name="q4" value="3"> Guten Abend</label><br />
+        <label><input type="radio" name="q4" value="4"> Auf Wiedersehen</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
+      <p class="hint" id="hint4" style="display:none;">It's what you say after waking up!</p>
+      <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question5" style="display:none;">
+      <h1>Question 5: What does "Bitte" mean in English?</h1>
+      <form>
+        <label><input type="radio" name="q5" value="1"> Please / You're welcome</label><br />
+        <label><input type="radio" name="q5" value="2"> Thanks</label><br />
+        <label><input type="radio" name="q5" value="3"> Hi</label><br />
+        <label><input type="radio" name="q5" value="4"> No</label><br />
+      </form>
+      <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
+      <p class="hint" id="hint5" style="display:none;">You say it when offering or replying politely.</p>
+      <button class="next-button" onclick="finishQuiz()">Finish</button>
+    </div>
+  </div>
+
+  <div class="question-page" id="result" style="display:none;">
+    <h1>Quiz Completed!</h1>
+    <p>Your score is: <span id="score-display"></span>/5</p>
+  </div>
+
+  <script>
+    let score = 0;
+
+    function showHint(hintId) {
+      document.getElementById(hintId).style.display = 'block';
+    }
+
+    function nextQuestion(questionNumber) {
+      const prevQuestion = questionNumber - 1;
+      const selected = document.querySelector(`input[name="q${prevQuestion}"]:checked`);
+      if (prevQuestion > 0 && !selected) {
+        alert("Please select an answer before proceeding.");
+        return;
+      }
+
+      if (selected) {
+        if (selected.value === "2" && prevQuestion === 1) score++;
+        if (selected.value === "2" && prevQuestion === 2) score++;
+        if (selected.value === "2" && prevQuestion === 3) score++;
+        if (selected.value === "2" && prevQuestion === 4) score++;
+        if (selected.value === "1" && prevQuestion === 5) score++;
+      }
+
+      const pages = document.querySelectorAll('.question-page');
+      pages.forEach(page => page.style.display = 'none');
+      const nextPage = document.getElementById('question' + questionNumber);
+      if (nextPage) {
+        nextPage.style.display = 'block';
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      const container = document.querySelector('.container');
+      container.innerHTML = `
+        <h1>Quiz Completed!</h1>
+        <p>Your score is: <span id="score-display">${score}</span>/5</p>
+      `;
+    }
+  </script>
+</body>
+</html>

@@ -65,9 +65,8 @@ const Hero = () => {
 					transition={{ delay: 0.6, duration: 0.6 }}
 					className="flex justify-center gap-4"
 				>
-					<button className="px-6 py-3 bg-gradient-to-r from-green-500 to-blue-600 rounded-full text-white hover:opacity-90 transition">
-						Start Learning
-					</button>
+		
+
 					<button className="px-6 py-3 border border-gray-600 text-white rounded-full hover:bg-gray-800 transition">
 						Explore Credentials
 					</button>

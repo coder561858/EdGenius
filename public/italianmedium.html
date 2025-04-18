@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles5.css" />
+  <title>Italian Quiz</title>
+</head>
+<body>
+<div class="container">
+  <div id="timer" style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">Time left: 20s</div>
+
+  <div class="question-page" id="question1">
+    <h1>Question 1: What is the correct synonym of "happy"?</h1>
+    <form>
+      <label><input type="radio" name="q1" value="1"> Triste</label><br />
+      <label><input type="radio" name="q1" value="2"> Contento</label><br />
+      <label><input type="radio" name="q1" value="3"> Arrabbiato</label><br />
+      <label><input type="radio" name="q1" value="4"> Nervoso</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+    <p class="hint" id="hint1" style="display:none;">Think of a word that means "happy" in Italian — it starts with C and ends like “-ento.”.</p>
+    <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question2" style="display:none;">
+    <h1>Question 2: What is the verb in the sentence: "Luca scrive una lettera."?</h1>
+    <form>
+      <label><input type="radio" name="q2" value="1"> Luca</label><br />
+      <label><input type="radio" name="q2" value="2"> Scrive</label><br />
+      <label><input type="radio" name="q2" value="3"> Una</label><br />
+      <label><input type="radio" name="q2" value="4"> Lettera</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
+    <p class="hint" id="hint2" style="display:none;">Which word shows what Luca is doing? It starts with S.</p>
+    <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question3" style="display:none;">
+    <h1>Question 3: What is the opposite of "fast"?</h1>
+    <form>
+      <label><input type="radio" name="q3" value="1"> Rapido</label><br />
+      <label><input type="radio" name="q3" value="2"> Lento</label><br />
+      <label><input type="radio" name="q3" value="3"> Agitato</label><br />
+      <label><input type="radio" name="q3" value="4"> Forte</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
+    <p class="hint" id="hint3" style="display:none;">If "rapido" means fast, pick the Italian word for slow</p>
+    <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question4" style="display:none;">
+    <h1>Question 4: Which sentence is grammatically correct?</h1>
+    <form>
+      <label><input type="radio" name="q4" value="1"> Lui andare al lavoro ogni giorno.</label><br />
+      <label><input type="radio" name="q4" value="2"> Lui va al lavoro ogni giorno.</label><br />
+      <label><input type="radio" name="q4" value="3"> Lui andato al lavoro ogni giorno.</label><br />
+      <label><input type="radio" name="q4" value="4"> Lui andava andare al lavoro ogni giorno.</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
+    <p class="hint" id="hint4" style="display:none;">Look for the sentence that has "va" — it means "he goes."</p>
+    <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question5" style="display:none;">
+    <h1>Question 5: What does an adjective describe?</h1>
+    <form>
+      <label><input type="radio" name="q5" value="1"> Una qualità o caratteristica</label><br />
+      <label><input type="radio" name="q5" value="2"> Un'azione</label><br />
+      <label><input type="radio" name="q5" value="3"> Un nome</label><br />
+      <label><input type="radio" name="q5" value="4"> Una congiunzione</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
+    <p class="hint" id="hint5" style="display:none;">An adjective tells you something like “beautiful,” “red,” or “tall” — a quality.</p>
+    <button class="next-button" onclick="finishQuiz()">Finish</button>
+  </div>
+</div>
+
+<script>
+let score = 0;
+let timeLeft = 20;
+let timer;
+
+function startTimer() {
+  clearInterval(timer);
+  timeLeft = 20;
+  document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      alert("Time's up! Please select an answer.");
+    }
+  }, 1000);
+}
+
+function showHint(hintId) {
+  document.getElementById(hintId).style.display = 'block';
+}
+
+function nextQuestion(questionNumber) {
+  const prevQuestion = questionNumber - 1;
+  const selected = document.querySelector(`input[name="q${prevQuestion}"]:checked`);
+
+  if (!selected) {
+    alert("Please select an answer before moving to the next question.");
+    startTimer();
+    return;
+  }
+
+  const correctAnswers = {
+    1: "2",
+    2: "2",
+    3: "2",
+    4: "2",
+    5: "1"
+  };
+
+  if (selected.value === correctAnswers[prevQuestion]) {
+    score++;
+  }
+
+  document.querySelectorAll('.question-page').forEach(page => page.style.display = 'none');
+
+  const nextPage = document.getElementById('question' + questionNumber);
+  if (nextPage) {
+    nextPage.style.display = 'block';
+    startTimer();
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz() {
+  clearInterval(timer);
+  const container = document.querySelector('.container');
+  container.innerHTML = `
+    <h1>Quiz Completed!</h1>
+    <p>Your score is: <span id="score-display">${score}</span>/5</p>
+  `;
+}
+
+startTimer();
+</script>
+</body>
+</html>

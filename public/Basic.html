@@ -158,20 +158,23 @@
 
       <div class="input-group">
         <input type="text" placeholder="Username" data-field="username" />
-        <div class="input-group__error"></div>
+        <div class="input-group__error">Please fill out username</div>
+
       </div>
 
       <div class="input-group">
         <input type="password" placeholder="Password" data-field="password" />
-        <div class="input-group__error"></div>
+        <div class="input-group__error">Please out password</div>
+        
       </div>
 
       <div class="remember-forgot">
         <label><input type="checkbox" /> Remember</label>
         <a href="#" style="color: white; text-decoration: none;">Forgot Password?</a>
       </div>
+      <button type="button" id="SIGNUPBtn">SIGN UP</button>
 
-      <button type="submit">SIGN UP</button>
+      
 
       <div class="or-separator">OR</div>
 
@@ -183,53 +186,45 @@
   </div>
 
   <script>
-    function validateInput(event) {
-      const input = event.target;
-      const value = input.value.trim();
-      const field = input.dataset.field;
-      const errorElement = input.parentElement.querySelector('.input-group__error');
+  function validateInput(inputElement) {
+    const value = inputElement.value.trim();
+    const field = inputElement.dataset.field;
+    const errorMessageElement = inputElement.parentElement.querySelector('.input-group__error');
 
-      if (value === '') {
-        input.classList.add('input--error');
-        errorElement.textContent = `Please fill out ${field}`;
-      } else {
-        input.classList.remove('input--error');
-        errorElement.textContent = '';
-      }
+    if (value === '') {
+      inputElement.classList.add('input--error');
+      errorMessageElement.textContent = `Please fill out ${field}`;
+      return false;
+    } else {
+      inputElement.classList.remove('input--error');
+      errorMessageElement.textContent = '';
+      return true;
     }
+  }
 
-    function validateForm(event) {
-      event.preventDefault();
+  const inputs = document.querySelectorAll('.input-group input');
+  inputs.forEach(input => {
+    input.addEventListener('blur', () => validateInput(input));
+  });
 
-      let isValid = true;
-      const inputs = document.querySelectorAll('.input-group input');
-
-      inputs.forEach(input => {
-        const value = input.value.trim();
-        const field = input.dataset.field;
-        const errorElement = input.parentElement.querySelector('.input-group__error');
-
-        if (value === '') {
-          isValid = false;
-          input.classList.add('input--error');
-          errorElement.textContent = `Please fill out ${field}`;
-        } else {
-          input.classList.remove('input--error');
-          errorElement.textContent = '';
-        }
-      });
-
-      if (isValid) {
-  
-        alert("Form submitted successfully!");
-      }
-    }
-
-    document.querySelectorAll('.input-group input').forEach(input => {
-      input.addEventListener('blur', validateInput);
+  document.getElementById('SIGNUPBtn').addEventListener('click', () => {
+    let allValid = true;
+    inputs.forEach(input => {
+      if (!validateInput(input)) allValid = false;
     });
 
-    document.querySelector('form').addEventListener('submit', validateForm);
+    if (allValid) {
+      const usernameInput = document.querySelector('input[data-field="username"]');
+      const username = usernameInput.value.trim();
+  
+      window.location.href = `./l.html?username=${encodeURIComponent(username)}`;
+    }
+  });
+</script>
+
+
+
+
   </script>
 </body>
 </html>

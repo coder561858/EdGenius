@@ -24,7 +24,7 @@ const Login = () => {
         </div>
         <button type="submit">SIGN UP</button>
         <div className="or-separator">OR</div>
-        <a href="/auth/google" className="google-login">
+        <a href="http://localhost:5000" className="google-login">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
             alt="Google Icon"

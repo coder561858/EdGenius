@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles5.css" />
+  <title>Spanish Quiz</title>
+</head>
+<body>
+<div class="container">
+  <div id="timer" style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;"></div>
+
+  <div class="question-page" id="question1">
+    <h1>Question 1: What is the correct synonym of "happy" in Spanish?</h1>
+    <form>
+      <label><input type="radio" name="q1" value="1"> Triste</label><br />
+      <label><input type="radio" name="q1" value="2"> Feliz</label><br />
+      <label><input type="radio" name="q1" value="3"> Enojado</label><br />
+      <label><input type="radio" name="q1" value="4"> Nervioso</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
+    <p class="hint" id="hint1" style="display:none;">Look for the word that sounds like “felicity” — it's related to happiness.</p>
+    <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question2" style="display:none;">
+    <h1>Question 2: What is the verb in the sentence: "María come una manzana."?</h1>
+    <form>
+      <label><input type="radio" name="q2" value="1"> María</label><br />
+      <label><input type="radio" name="q2" value="2"> Come</label><br />
+      <label><input type="radio" name="q2" value="3"> Una</label><br />
+      <label><input type="radio" name="q2" value="4"> Manzana</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
+    <p class="hint" id="hint2" style="display:none;">Which word shows what María is doing? It means "eats."</p>
+    <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question3" style="display:none;">
+    <h1>Question 3: What is the opposite of "rápido"?</h1>
+    <form>
+      <label><input type="radio" name="q3" value="1"> Rápido</label><br />
+      <label><input type="radio" name="q3" value="2"> Lento</label><br />
+      <label><input type="radio" name="q3" value="3"> Alto</label><br />
+      <label><input type="radio" name="q3" value="4"> Fuerte</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
+    <p class="hint" id="hint3" style="display:none;">"Rápido" means fast — choose the word for slow.</p>
+    <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question4" style="display:none;">
+    <h1>Question 4: Which sentence is grammatically correct in Spanish?</h1>
+    <form>
+      <label><input type="radio" name="q4" value="1"> Él ir a la escuela cada día.</label><br />
+      <label><input type="radio" name="q4" value="2"> Él va a la escuela cada día.</label><br />
+      <label><input type="radio" name="q4" value="3"> Él ido a la escuela cada día.</label><br />
+      <label><input type="radio" name="q4" value="4"> Él iba ir a la escuela cada día.</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
+    <p class="hint" id="hint4" style="display:none;">"Va" means "he goes" — look for the sentence with that word.</p>
+    <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
+  </div>
+
+  <div class="question-page" id="question5" style="display:none;">
+    <h1>Question 5: What does an adjective describe?</h1>
+    <form>
+      <label><input type="radio" name="q5" value="1"> Una cualidad o característica</label><br />
+      <label><input type="radio" name="q5" value="2"> Una acción</label><br />
+      <label><input type="radio" name="q5" value="3"> Un sustantivo</label><br />
+      <label><input type="radio" name="q5" value="4"> Una conjunción</label><br />
+    </form>
+    <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
+    <p class="hint" id="hint5" style="display:none;">Adjectives describe qualities like “beautiful” or “red.”</p>
+    <button class="next-button" onclick="finishQuiz()">Finish</button>
+  </div>
+</div>
+
+<script>
+let score = 0;
+
+
+function showHint(hintId) {
+  document.getElementById(hintId).style.display = 'block';
+}
+
+function nextQuestion(questionNumber) {
+  const prevQuestion = questionNumber - 1;
+  const selected = document.querySelector(`input[name="q${prevQuestion}"]:checked`);
+
+  if (!selected) {
+    alert("Please select an answer before moving to the next question.");
+    startTimer();
+    return;
+  }
+
+  const correctAnswers = {
+    1: "2", // Feliz
+    2: "2", // Come
+    3: "2", // Lento
+    4: "2", // Él va a la escuela...
+    5: "1"  // Una cualidad o característica
+  };
+
+  if (selected.value === correctAnswers[prevQuestion]) {
+    score++;
+  }
+
+  document.querySelectorAll('.question-page').forEach(page => page.style.display = 'none');
+
+  const nextPage = document.getElementById('question' + questionNumber);
+  if (nextPage) {
+    nextPage.style.display = 'block';
+    startTimer();
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz() {
+  clearInterval(timer);
+  const container = document.querySelector('.container');
+  container.innerHTML = `
+    <h1>Quiz Completed!</h1>
+    <p>Your score is: <span id="score-display">${score}</span>/5</p>
+  `;
+}
+
+startTimer();
+</script>
+</body>
+</html>

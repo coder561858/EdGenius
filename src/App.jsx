@@ -51,9 +51,6 @@ function App() {
 }
 
 export default App;
-<<<<<<< HEAD
+
 <a href="http://localhost:5000/login">Login</a>
 
-
-=======
->>>>>>> 51246e53233d48fea8fbd927d8adc9783ad89a14

@@ -32,7 +32,7 @@
       padding: 15px 40px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      
       z-index: 1000;
     }
 
@@ -40,6 +40,7 @@
       font-size: 1.5rem;
       font-weight: 600;
       color: #00ffee;
+      margin-left:0px;
     }
 
     .nav-links {
@@ -152,51 +153,65 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">EdGenius</div>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Languages</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </div>
-  </nav>
+<nav class="navbar">
+<div class="logo">EdGenius</div>
+</nav>
+
+  <h2 id="welcome-message" style="color:white; text-align:center; margin-top: 20px;"></h2>
+  
+
+
 
   <!-- Language Cards -->
   <div class="card-container">
     <div class="card">
+      <a href="/EnglishLevels.html">
       <img src="https://th.bing.com/th/id/OIP._sJ2ZjSqGVkMYC0C04cuLQHaEE?w=264&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="English">
+      
       <div class="language-name">English</div>
+      </a>
     </div>
     <div class="card">
+    <a href="/Spanishlevels.html">
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spanish">
       <div class="language-name">Spanish</div>
+      </a>
     </div>
+   
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="French">
-      <div class="language-name">French</div>
-    </div>
-    <div class="card">
+      <a href="/GermanLevels.html">
       <img src="https://th.bing.com/th/id/OIP.EvdMimXlo6VMiRgyaVAKYQHaE7?w=260&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="German">
       <div class="language-name">German</div>
+      </a>
     </div>
+    
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Dutch">
-      <div class="language-name">Dutch</div>
-    </div>
-    <div class="card">
+      <a href="/italianslevels.html">
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="Italian">
       <div class="language-name">Italian</div>
+    </a>
     </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" alt="Portuguese">
-      <div class="language-name">Portuguese</div>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="Russian">
-      <div class="language-name">Russian</div>
-    </div>
+  
+   
   </div>
+
+
+<script>
+
+  const params = new URLSearchParams(window.location.search);
+  const emailName = params.get('name');      
+  const username = params.get('username');   
+
+  const welcomeEl = document.getElementById('welcome-message');
+
+  if (emailName && !username) {
+    welcomeEl.textContent = `Welcome, ${emailName.split('@')[0]}!`;
+  } else if (username && !emailName) {
+    welcomeEl.textContent = `Welcome, ${username}!`;
+  }
+
+
+</script>
 
 </body>
 </html>

@@ -78,7 +78,7 @@ bash
 Copy
 Edit
 # Clone the repo
-git clone 
+git clone https://github.com/coder561858/EdGenius.git
 
 # Install dependencies
 cd EdGenius

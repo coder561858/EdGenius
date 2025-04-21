@@ -10,8 +10,10 @@
 <body>
 
   <div class="container">
-    <div class="container">
-      <div id="timer" style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">Timeleft:300s</div>
+    <div id="timer" style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">Time left: 300s</div>
+
+ 
+
     <div class="question-page" id="question1">
       <h1>Question 1: What is a synonym for 'happy'?</h1>
       <div class="options-grid">
@@ -207,7 +209,7 @@
       </div>
       <button class="next-button" onclick="nextQuestion(15)">Next Question</button>
     </div>
-    
+
     <div class="question-page" id="question15" style="display:none;">
       <h1>Question 15: Choose the correct spelling:</h1>
       <div class="options-grid">
@@ -222,36 +224,36 @@
       <button class="next-button" onclick="finishQuiz()">Finish</button>
     </div>
   </div>
-
   <div class="question-page" id="result" style="display:none;">
     <h1>Quiz Completed!</h1>
-    <p >Your score is: <span id="score-display"></span>/15</p>
+    <p>Your score is: <span id="score-display"></span>/15</p>
     <a href="EnglishLevels.html">
-    <button class="option-button">Try Again</button>
+      <button class="option-button">Try Again</button>
     </a>
     <button class="option-button" onclick="NFT()">Claim NFT Credentials</button>
   </div>
+
 
   <script>
     let score = 0;
     let selectedAnswers = {};
     let currentQuestion = 1;
-    let timeLeft = 300; 
-    let timer; 
+    let timeLeft = 300;
+    let timer;
 
-function startTimer(questionNumber) {
-    timeLeft = 300;
-    document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
+    function startTimer() {
+      document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
 
-    timer = setInterval(() => {
+      timer = setInterval(() => {
         timeLeft--;
         document.getElementById('timer').textContent = `Time left: ${timeLeft}s`;
         if (timeLeft <= 0) {
-            clearInterval(timer);
-            alert("Time's up! Please select an answer before proceeding.");
+          clearInterval(timer);
+          alert("Time's up!");
+          finishQuiz();
         }
-},1000);
-}
+      }, 1000);
+    }
 
     function selectAnswer(question, value) {
       selectedAnswers[question] = value;
@@ -259,7 +261,7 @@ function startTimer(questionNumber) {
       document.querySelectorAll(`#question${question} .option-button`).forEach(btn => {
         btn.style.background = '';
       });
-      
+
       event.target.style.background = '#2563eb';
     }
 
@@ -269,7 +271,7 @@ function startTimer(questionNumber) {
         return;
       }
 
-      
+      // Score checking logic
       const ans = selectedAnswers[currentQuestion];
       if (
         (currentQuestion===1 && ans==="2") ||
@@ -293,9 +295,9 @@ function startTimer(questionNumber) {
       document.getElementById(`question${currentQuestion}`).style.display = 'none';
       currentQuestion = nextQ;
       document.getElementById(`question${currentQuestion}`).style.display = 'block';
-      
-      // Update progress bar
-      let progress = (currentQuestion - 1) * 6.67; // Each question contributes 6.67% progress
+
+      // Progress bar update
+      const progress = (currentQuestion - 1) * 6.67;
       document.getElementById('progress-bar').style.width = `${progress}%`;
     }
 
@@ -304,15 +306,25 @@ function startTimer(questionNumber) {
         alert("Please select an answer before finishing.");
         return;
       }
-      if (selectedAnswers[15] === "2") score++;
+
+      // Final question score
+      if (selectedAnswers[15] === "2") {
+        score++;
+      }
+
+      clearInterval(timer); // Stop timer
+
+      // Show result
       document.querySelector('.container').style.display = 'none';
       document.getElementById('result').style.display = 'block';
       document.getElementById('score-display').textContent = score;
     }
-    function NFT(){
+
+    function NFT() {
       alert("Error minting NFT");
-      return;
     }
+
+    // Start the quiz timer
     startTimer();
   </script>
 </body>

@@ -34,7 +34,7 @@ const Navbar = () => {
 							<Link to="/contact" className="text-white hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium">
 								Contact
 							</Link>
-							<Link to="http://localhost:5000" className="text-white hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium">
+							<Link to="/login" className="text-white hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium">
 								Login
 							</Link>
 						</div>

@@ -10,117 +10,294 @@
 <body>
   <div class="container">
     <div class="question-page" id="question1">
-      <h1>Question 1: Choose the correct synonym for "happy".</h1>
-      <form>
-        <label><input type="radio" name="q1" value="1"> Sad</label><br />
-        <label><input type="radio" name="q1" value="2"> Joyful</label><br />
-        <label><input type="radio" name="q1" value="3"> Angry</label><br />
-        <label><input type="radio" name="q1" value="4"> Nervous</label><br />
-      </form>
-      <button class="hint-button" onclick="showHint('hint1')">💡 Hint</button>
-      <p class="hint" id="hint1" style="display:none;">It's an emotion similar to being cheerful.</p>
+      <h1>Question 1: What is a synonym for 'happy'?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(1, '1')">Sad</button>
+        <button class="option-button" onclick="selectAnswer(1, '2')">Glad</button>
+        <button class="option-button" onclick="selectAnswer(1, '3')">Mad</button>
+        <button class="option-button" onclick="selectAnswer(1, '4')">Angry</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar" style="width: 6.67%;"></div>
+      </div>
       <button class="next-button" onclick="nextQuestion(2)">Next Question</button>
     </div>
 
     <div class="question-page" id="question2" style="display:none;">
-      <h1>Question 2: Identify the verb in this sentence: "She runs every morning."</h1>
-      <form>
-        <label><input type="radio" name="q2" value="1"> She</label><br />
-        <label><input type="radio" name="q2" value="2"> Runs</label><br />
-        <label><input type="radio" name="q2" value="3"> Every</label><br />
-        <label><input type="radio" name="q2" value="4"> Morning</label><br />
-      </form>
-      <button class="hint-button" onclick="showHint('hint2')">💡 Hint</button>
-      <p class="hint" id="hint2" style="display:none;">A verb shows an action or state.</p>
+      <h1>Question 2: Choose the correct spelling:</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(2, '1')">Recieve</button>
+        <button class="option-button" onclick="selectAnswer(2, '2')">Receive</button>
+        <button class="option-button" onclick="selectAnswer(2, '3')">Recive</button>
+        <button class="option-button" onclick="selectAnswer(2, '4')">Receeve</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 13.33%;"></div>
+      </div>
       <button class="next-button" onclick="nextQuestion(3)">Next Question</button>
     </div>
 
     <div class="question-page" id="question3" style="display:none;">
-      <h1>Question 3: What is the antonym of "strong"?</h1>
-      <form>
-        <label><input type="radio" name="q3" value="1"> Bold</label><br />
-        <label><input type="radio" name="q3" value="2"> Weak</label><br />
-        <label><input type="radio" name="q3" value="3"> Brave</label><br />
-        <label><input type="radio" name="q3" value="4"> Healthy</label><br />
-      </form>
-      <button class="hint-button" onclick="showHint('hint3')">💡 Hint</button>
-      <p class="hint" id="hint3" style="display:none;">It means the opposite of powerful.</p>
+      <h1>Question 3: Which is a noun?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(3, '1')">Run</button>
+        <button class="option-button" onclick="selectAnswer(3, '2')">Blue</button>
+        <button class="option-button" onclick="selectAnswer(3, '3')">Cat</button>
+        <button class="option-button" onclick="selectAnswer(3, '4')">Quickly</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar" style="width: 20%;"></div>
+      </div>
       <button class="next-button" onclick="nextQuestion(4)">Next Question</button>
     </div>
 
     <div class="question-page" id="question4" style="display:none;">
-      <h1>Question 4: Which sentence is grammatically correct?</h1>
-      <form>
-        <label><input type="radio" name="q4" value="1"> He go to school every day.</label><br />
-        <label><input type="radio" name="q4" value="2"> He goes to school every day.</label><br />
-        <label><input type="radio" name="q4" value="3"> He going to school every day.</label><br />
-        <label><input type="radio" name="q4" value="4"> He gone to school every day.</label><br />
-      </form>
-      <button class="hint-button" onclick="showHint('hint4')">💡 Hint</button>
-      <p class="hint" id="hint4" style="display:none;">Subject-verb agreement is important!</p>
+      <h1>Question 4: Which is an antonym of 'hot'?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(4, '1')">Warm</button>
+        <button class="option-button" onclick="selectAnswer(4, '2')">Cold</button>
+        <button class="option-button" onclick="selectAnswer(4, '3')">Boiling</button>
+        <button class="option-button" onclick="selectAnswer(4, '4')">Spicy</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar" style="width: 26.67%;"></div>
+      </div>
       <button class="next-button" onclick="nextQuestion(5)">Next Question</button>
     </div>
 
     <div class="question-page" id="question5" style="display:none;">
-      <h1>Question 5: What is a noun?</h1>
-      <form>
-        <label><input type="radio" name="q5" value="1"> A naming word</label><br />
-        <label><input type="radio" name="q5" value="2"> A doing word</label><br />
-        <label><input type="radio" name="q5" value="3"> A describing word</label><br />
-        <label><input type="radio" name="q5" value="4"> A connecting word</label><br />
-      </form>
-      <button class="hint-button" onclick="showHint('hint5')">💡 Hint</button>
-      <p class="hint" id="hint5" style="display:none;">It can be a person, place, or thing.</p>
+      <h1>Question 5: What is a synonym for 'quick'?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(5, '1')">Fast</button>
+        <button class="option-button" onclick="selectAnswer(5, '2')">Late</button>
+        <button class="option-button" onclick="selectAnswer(5, '3')">Slow</button>
+        <button class="option-button" onclick="selectAnswer(5, '4')">Tired</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 33.34%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(6)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question6" style="display:none;">
+      <h1>Question 6: Choose the correct spelling:</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(6, '1')">Definately</button>
+        <button class="option-button" onclick="selectAnswer(6, '2')">Definitely</button>
+        <button class="option-button" onclick="selectAnswer(6, '3')">Definatly</button>
+        <button class="option-button" onclick="selectAnswer(6, '4')">Definetly</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 40.01%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(7)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question7" style="display:none;">
+      <h1>Question 7: Which is an adjective?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(7, '1')">Run</button>
+        <button class="option-button" onclick="selectAnswer(7, '2')">Happiness</button>
+        <button class="option-button" onclick="selectAnswer(7, '3')">Beautiful</button>
+        <button class="option-button" onclick="selectAnswer(7, '4')">Jump</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 46.68%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(8)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question8" style="display:none;">
+      <h1>Question 8: What is a plural form of 'mouse'?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(8, '1')">Mouses</button>
+        <button class="option-button" onclick="selectAnswer(8, '2')">Mouse</button>
+        <button class="option-button" onclick="selectAnswer(8, '3')">Mices</button>
+        <button class="option-button" onclick="selectAnswer(8, '4')">Mice</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 53.35%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(9)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question9" style="display:none;">
+      <h1>Question 9: Which is a verb?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(9, '1')">Sing</button>
+        <button class="option-button" onclick="selectAnswer(9, '2')">Song</button>
+        <button class="option-button" onclick="selectAnswer(9, '3')">Singer</button>
+        <button class="option-button" onclick="selectAnswer(9, '4')">Singing</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 60.02%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(10)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question10" style="display:none;">
+      <h1>Question 10: What is a synonym for 'angry'?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(10, '1')">Happy</button>
+        <button class="option-button" onclick="selectAnswer(10, '2')">Upset</button>
+        <button class="option-button" onclick="selectAnswer(10, '3')">Calm</button>
+        <button class="option-button" onclick="selectAnswer(10, '4')">Joyful</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 66.69%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(11)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question11" style="display:none;">
+      <h1>Question 11: Choose the correct spelling:</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(11, '1')">Accomodate</button>
+        <button class="option-button" onclick="selectAnswer(11, '2')">Acommodate</button>
+        <button class="option-button" onclick="selectAnswer(11, '3')">Accommodate</button>
+        <button class="option-button" onclick="selectAnswer(11, '4')">Acommadate</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 73.36%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(12)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question12" style="display:none;">
+      <h1>Question 12: Which is a conjunction?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(12, '1')">Because</button>
+        <button class="option-button" onclick="selectAnswer(12, '2')">Quick</button>
+        <button class="option-button" onclick="selectAnswer(12, '3')">Blue</button>
+        <button class="option-button" onclick="selectAnswer(12, '4')">Run</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 80.03%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(13)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question13" style="display:none;">
+      <h1>Question 13: Which is a noun?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(13, '1')">Drive</button>
+        <button class="option-button" onclick="selectAnswer(13, '2')">Careful</button>
+        <button class="option-button" onclick="selectAnswer(13, '3')">Tree</button>
+        <button class="option-button" onclick="selectAnswer(13, '4')">Fast</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 86.7%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(14)">Next Question</button>
+    </div>
+
+    <div class="question-page" id="question14" style="display:none;">
+      <h1>Question 14: Which word is an adverb?</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(14, '1')">Slowly</button>
+        <button class="option-button" onclick="selectAnswer(14, '2')">Slow</button>
+        <button class="option-button" onclick="selectAnswer(14, '3')">Slowness</button>
+        <button class="option-button" onclick="selectAnswer(14, '4')">Slowed</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 93.7%;"></div>
+      </div>
+      <button class="next-button" onclick="nextQuestion(15)">Next Question</button>
+    </div>
+    
+    <div class="question-page" id="question15" style="display:none;">
+      <h1>Question 15: Choose the correct spelling:</h1>
+      <div class="options-grid">
+        <button class="option-button" onclick="selectAnswer(15, '1')">Febuary</button>
+        <button class="option-button" onclick="selectAnswer(15, '2')">February</button>
+        <button class="option-button" onclick="selectAnswer(15, '3')">Februry</button>
+        <button class="option-button" onclick="selectAnswer(15, '4')">Febrery</button>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 100%;"></div>
+      </div>
       <button class="next-button" onclick="finishQuiz()">Finish</button>
     </div>
   </div>
 
   <div class="question-page" id="result" style="display:none;">
     <h1>Quiz Completed!</h1>
-    <p>Your score is: <span id="score-display"></span>/5</p>
+    <p >Your score is: <span id="score-display"></span>/15</p>
+    <a href="EnglishLevels.html">
+    <button class="option-button">Try Again</button>
+    </a>
+    <button class="option-button" onclick="NFT()">Claim NFT Credentials</button>
   </div>
 
   <script>
     let score = 0;
+    let selectedAnswers = {};
+    let currentQuestion = 1;
 
-    function showHint(hintId) {
-      document.getElementById(hintId).style.display = 'block';
+    function selectAnswer(question, value) {
+      selectedAnswers[question] = value;
+
+      document.querySelectorAll(`#question${question} .option-button`).forEach(btn => {
+        btn.style.background = '';
+      });
+      
+      event.target.style.background = '#2563eb';
     }
+ 
 
-    function nextQuestion(questionNumber) {
-      const prevQuestion = questionNumber - 1;
-      const selected = document.querySelector(`input[name="q${prevQuestion}"]:checked`);
-      if (prevQuestion > 0 && !selected) {
+    function nextQuestion(nextQ) {
+      if (!selectedAnswers[currentQuestion]) {
         alert("Please select an answer before proceeding.");
         return;
       }
 
-      if (selected) {
-        if (selected.value === "2" && prevQuestion === 1) score++;
-        if (selected.value === "2" && prevQuestion === 2) score++;
-        if (selected.value === "2" && prevQuestion === 3) score++;
-        if (selected.value === "2" && prevQuestion === 4) score++;
-        if (selected.value === "1" && prevQuestion === 5) score++;
+      
+      const ans = selectedAnswers[currentQuestion];
+      if (
+        (currentQuestion===1 && ans==="2") ||
+        (currentQuestion===2 && ans==="2") ||
+        (currentQuestion===3 && ans==="3") ||
+        (currentQuestion===4 && ans==="2") ||
+        (currentQuestion===5 && ans==="1") ||
+        (currentQuestion===6 && ans==="2") ||
+        (currentQuestion===7 && ans==="3") ||
+        (currentQuestion===8 && ans==="4") ||
+        (currentQuestion===9 && ans==="1") ||
+        (currentQuestion===10 && ans==="2") ||
+        (currentQuestion===11 && ans==="3") ||
+        (currentQuestion===12 && ans==="1") ||
+        (currentQuestion===13 && ans==="3") ||
+        (currentQuestion===14 && ans==="1")
+      ) {
+        score++;
+        
+        
       }
+   
 
-      const pages = document.querySelectorAll('.question-page');
-      pages.forEach(page => page.style.display = 'none');
-      const nextPage = document.getElementById('question' + questionNumber);
-      if (nextPage) {
-        nextPage.style.display = 'block';
-      } else {
-        finishQuiz();
-      }
+      document.getElementById(`question${currentQuestion}`).style.display = 'none';
+      currentQuestion = nextQ;
+      document.getElementById(`question${currentQuestion}`).style.display = 'block';
+      
+  
+      let progress = (currentQuestion - 1) * 6.67; 
+      document.getElementById('progress-bar').style.width = `${progress}%`;
     }
 
     function finishQuiz() {
-      const container = document.querySelector('.container');
-      container.innerHTML = `
-        <h1>Quiz Completed!</h1>
-        <p>Your score is: <span id="score-display">${score}</span>/5</p>
-      `;
+      if (!selectedAnswers[15]) {
+        alert("Please select an answer before finishing.");
+        return;
+      }
+      if (selectedAnswers[15] === "2") score++;
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('score-display').textContent = score;
+    }
+    function NFT(){
+      alert("Error minting NFT");
+      return;
     }
   </script>
 </body>
 </html>
-

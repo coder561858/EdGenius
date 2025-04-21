@@ -1,23 +1,22 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1a1f27, #232a33);
-  }
-  .left-panel {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 20px;
-  }
-  .login-box {
-    width: 330px;
-    text-align: center;
-    border: 2px solid #ccc;
-    padding: 20px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #2a2f36, #3a3f46);
-  }
-  /* Add other styles from your HTML page */
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1a1f27, #232a33);
+}
+.left-panel {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 20px;
+}
+.login-box {
+  width: 330px;
+  text-align: center;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2a2f36, #3a3f46);
+}
+/* Add other styles from your HTML page */

@@ -12,26 +12,8 @@ const teamMembers = [
       twitter: "#"
     }
   },
-  {
-    name: "Deepak Sharma",
-    role: "UI/UX Designer",
-    bio: "Designs elegant and intuitive user experiences to boost user engagement and satisfaction.",
-    social: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#"
-    }
-  },
-  {
-    name: "Ekagamjot Singh",
-    role: "Frontend Developer",
-    bio: "Focused on creating responsive and interactive web applications. Loves to experiment with new technologies.",
-    social: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#"
-    }
-  },
+ 
+
   {
     name: "Aadi Malik",
     role: "Backend Developer",

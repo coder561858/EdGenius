@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: #1a1f27;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .login-box {
+      background: #2e2e2e;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+    .input-group__error {
+      font-size: 12px;
+      color: yellow;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      background: grey;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: lightseagreen;
+      color: black;
+    }
+    .input--error {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="login-box" id="loginForm">
+    <h2>Login</h2>
+
+    <div class="input-group">
+      <input type="text" placeholder="Username" data-field="username" />
+      <div class="input-group__error"></div>
+    </div>
+
+    <div class="input-group">
+      <input type="password" placeholder="Password" data-field="password" />
+      <div class="input-group__error"></div>
+    </div>
+
+    <button type="submit" id="SIGNUPBtn">SIGN UP</button>
+  </form>
+
+  <script>
+    function validateInput(inputElement) {
+      const value = inputElement.value.trim();
+      const field = inputElement.dataset.field;
+      const errorMessageElement = inputElement.parentElement.querySelector('.input-group__error');
+
+      if (value === '') {
+        inputElement.classList.add('input--error');
+        errorMessageElement.textContent = `Please fill out ${field}`;
+        return false;
+      } else {
+        inputElement.classList.remove('input--error');
+        errorMessageElement.textContent = '';
+        return true;
+      }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault(); // Stop default form submit
+
+      const inputs = document.querySelectorAll('.input-group input');
+      let allValid = true;
+
+      inputs.forEach(input => {
+        if (!validateInput(input)) allValid = false;
+      });
+
+      if (allValid) {
+        const username = document.querySelector('input[data-field="username"]').value.trim();
+        window.location.href = `./EnglishLevels.html?username=${encodeURIComponent(username)}`;
+      }
+    });
+  </script>
+
+</body>
+</html>

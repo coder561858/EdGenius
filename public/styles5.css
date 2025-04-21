@@ -5,15 +5,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom right, #111827, #1f2937, #000000); /* Matches Hero gradient */
+    background: linear-gradient(to bottom right, #111827, #1f2937, #000000);
     color: #e0f7fa;
     overflow: hidden;
     position: relative;
-}
-
-/* Decorative blur elements just like Hero */
-body::before,
-body::after {
+  }
+  
+  body::before,
+  body::after {
     content: "";
     position: absolute;
     width: 320px;
@@ -22,65 +21,81 @@ body::after {
     filter: blur(120px);
     opacity: 0.2;
     z-index: 0;
-}
-body::before {
+  }
+  body::before {
     top: -120px;
     right: -120px;
-    background: #8b5cf6; /* Purple-ish glow */
-}
-body::after {
+    background: #8b5cf6;
+  }
+  body::after {
     bottom: -120px;
     left: -120px;
-    background: #3b82f6; /* Blue-ish glow */
-}
-
-.container {
+    background: #3b82f6;
+  }
+  
+  .container {
     text-align: center;
     background: rgba(0, 0, 0, 0.75);
     padding: 30px;
     border-radius: 20px;
     width: 90%;
-    max-width: 700px;
+    max-width: 650px;
     box-shadow: 0 0 25px rgba(0, 255, 200, 0.15);
     z-index: 1;
     position: relative;
     animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
+  }
+  
+  @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-h1 {
-    margin-bottom: 25px;
+  }
+  
+  .question-count {
+    color: #a5f3fc;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  h1 {
     font-size: 24px;
-    color: #67e8f9;
-}
-
-form {
     margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin: 10px 0;
-    font-size: 16px;
-    color: #ffffff;
-}
-
-.hint-button, .next-button, .home-button, .restart-button {
-    background-image: linear-gradient(to right, #22c55e, #3b82f6); /* Green to blue gradient */
-    border: none;
+    color: #67e8f9;
+  }
+  
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .option-button {
+    background-color: #1f2937;
     color: white;
-    padding: 10px 25px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
     font-size: 16px;
-    margin: 12px 8px;
     cursor: pointer;
-    border-radius: 9999px;
-    transition: opacity 0.3s ease;
-}
-
-.hint-button:hover, .next-button:hover, .home-button:hover, .restart-button:hover {
-    opacity: 0.9;
-}
+    transition: background 0.3s ease;
+  }
+  
+  .option-button:hover {
+    background-color: #374151;
+  }
+  
+  .progress-bar-container {
+    background-color: #374151;
+    border-radius: 10px;
+    height: 8px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .progress-bar {
+    background-color: #3b82f6;
+    height: 100%;
+    border-radius: 10px;
+  }
+  

@@ -67,9 +67,7 @@ const Hero = () => {
 				>
 		
 
-					<button className="px-6 py-3 border border-gray-600 text-white rounded-full hover:bg-gray-800 transition">
-						Explore Credentials
-					</button>
+					
 				</motion.div>
 
 				{/* Quick stats */}

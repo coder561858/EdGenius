@@ -2,169 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quiz Levels</title>
+  <link rel="icon" href="EG logo.jpg" type="image/jpg"/>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      background: linear-gradient(to bottom right, #111827, #1f2937, #000000);
-      color: #e0f7fa;
-      overflow: hidden;
-      position: relative;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 9999px;
-      filter: blur(120px);
-      opacity: 0.2;
-      z-index: 0;
-    }
-
-    body::before {
-      top: -120px;
-      right: -120px;
-      background: #8b5cf6;
-    }
-
-    body::after {
-      bottom: -120px;
-      left: -120px;
-      background: #3b82f6;
-    }
-
-    .container {
-      text-align: center;
-      background: rgba(0, 0, 0, 0.75);
-      padding: 30px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 1200px;
-      box-shadow: 0 0 25px rgba(0, 255, 200, 0.15);
-      z-index: 1;
-      position: relative;
-      animation: fadeIn 1s ease-in-out;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top left, #0f172a, #1e293b, #000000);
+      color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     h1 {
+      font-size: 2rem;
+      color: #38bdf8;
       margin-bottom: 40px;
-      font-size: 2em;
-      color: #67e8f9;
     }
 
-    .quiz-levels {
+    .button-group {
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
       gap: 20px;
-      width: 100%;
-      margin: 0;
     }
 
-    .level {
-      font-family: 'Bradley Hand ITC', cursive;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 20px;
-      width: calc(33.333% - 40px);
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-sizing: border-box;
-      color: white;
-    }
-
-    .level:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .level img {
-      width: 100%;
-      border-radius: 10px;
+    .button-group a {
+      text-decoration: none;
     }
 
     button {
-      background-image: linear-gradient(to right, #22c55e, #3b82f6);
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
       border: none;
-      border-radius: 9999px;
-      color: white;
-      padding: 10px 25px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 16px;
-      transition: opacity 0.3s ease;
-      margin-top: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     button:hover {
-      opacity: 0.9;
+      transform: translateY(-4px);
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .easy {
+      background-color: #22c55e;
+      color: white;
     }
 
-    @media screen and (max-width: 768px) {
-      .level {
-        width: calc(50% - 40px);
-      }
-
-      .quiz-levels {
-        justify-content: space-between;
-      }
+    .medium {
+      background-color: #facc15;
+      color: black;
     }
 
-    @media screen and (max-width: 480px) {
-      .level {
-        width: 100%;
+    .hard {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      font-weight: bold;
+      font-size: 20px;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+        align-items: center;
       }
 
       h1 {
-        font-size: 1.5em;
+        font-size: 1.5rem;
       }
 
-      .quiz-levels {
+      nav {
         flex-direction: column;
-        align-items: center;
+        top: 10px;
+        right: 20px;
+        gap: 20px;
+        align-items: flex-end;
+      }
+
+      .logo {
+        font-size: 16px;
+        top: 10px;
+        left: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Choose Your Quiz Level!</h1>
-    <div class="quiz-levels">
-      <div class="level easy">
-     
-        <h2>Easy</h2>
-        <a href="Englisheasy.html"><button>Start Easy Quiz</button></a>
-      </div>
-      <div class="level medium">
-        
-        <h2>Medium</h2>
-        <a href="EnglishMedium.html"><button>Start Medium Quiz</button></a>
-      </div>
-      <div class="level hard">
-        
-        <h2>Hard</h2>
-        <a href="EnglishHard.html"><button>Start Hard Quiz</button></a>
-      </div>
-    </div>
+  <div class="logo">LearnChain</div>
+
+  <nav>
+    <a href="./Hero">Home</a>
+    <a href="./Hero">Team</a>
+    <a href="./Hero">FAQ</a>
+    <a href="./Hero">Contact</a>
+    <a href="./Hero">Login</a>
+  </nav>
+<h2 id="welcome-message"></h2>
+  <h1>Choose Your Quiz Level</h1>
+
+  <div class="button-group">
+    <a href="Englisheasy.html"><button class="easy">Easy</button></a>
+    <a href="EnglishMedium.html"><button class="medium">Medium</button></a>
+    <a href="EnglishHard.html"><button class="hard">Hard</button></a>
   </div>
+
+ <script>
+    const params = new URLSearchParams(window.location.search);
+    const emailName = params.get('name');
+    const username = params.get('username');
+    const welcomeEl = document.getElementById('welcome-message');
+
+    if (emailName && !username) {
+      welcomeEl.textContent = `Welcome, ${emailName.split('@')[0]}!`;
+    } else if (username && !emailName) {
+      welcomeEl.textContent = `Welcome, ${username}!`;
+    } else {
+      welcomeEl.textContent = `Welcome to LearnChain!`;
+    }
+  </script>
 </body>
 </html>

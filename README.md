@@ -81,7 +81,7 @@ Edit
 git clone https://github.com/coder561858/EdGenius.git
 
 # Install dependencies
-cd EdGenius
+cd H-PROJECT
 npm install
 
 # Start development server

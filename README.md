@@ -54,9 +54,9 @@ Sponsor Technologies Used (if any):
 ✅ Earnable Points Stored On-chain
 
 📽️ Demo & Deliverables
-Demo Video Link: https://youtu.be/your-demo-video
+Demo Video Link: https://imagekit.io/tools/asset-public-link?detail=%7B%22name%22%3A%22Untitled%20video%20-%20Made%20with%20Clipchamp.mp4%22%2C%22type%22%3A%22video%2Fmp4%22%2C%22signedurl_expire%22%3A%222028-04-22T07%3A20%3A47.963Z%22%2C%22signedUrl%22%3A%22https%3A%2F%2Fmedia-hosting.imagekit.io%2F374a9cdb85a14a82%2FUntitled%2520video%2520-%2520Made%2520with%2520Clipchamp.mp4%3FExpires%3D1840000848%26Key-Pair-Id%3DK2ZIVPTIP2VGHC%26Signature%3DAoyzkz8Hfn-29TwvdFJoSuw742P7lX5KuN-1KfCWg~kARRGcicYIlNBvi4eMlnu9W5p9ZNGBKNanMRwrMcydA7H2TZ9c~D20LRYJb2HT7NHCnNf5cWD-vVpqW7bcnq2FyNVXykS-yvRUJAYgJmgaNuXOMAoirfYzbrD-~HVXDipLfJUEdSRxgOrRSXQAQoKPRBF6bKRg--~250jc5Ia0KrfToJsnHM4Oe5e8hgn2DYnh6G84WYM9lPtZ2LRst7~DZkfMMi-N6ro7iV~o7m8paM52iz6NQ9NVpbRi06gbVBCbA-FF202KDUNoRijy9WPzlDyp7TKA5I1yPt-6n6fJpQ__%22%7D
 
-Pitch Deck / PPT Link: https://docs.google.com/presentation/d/your-pitch
+Pitch Deck / PPT Link: https://gamma.app/docs/ej19wexklj4rbmz?following_id=hxcbczujob5clb6&follow_on_start=true
 
 
 
@@ -71,7 +71,7 @@ Firebase credentials
 VITE_PRIVY_APP_ID=...
 
 VITE_ALCHEMY_API_KEY=...
-
+if you want the keys for demo testing you can directly contact me.
 
 Local Setup:
 bash

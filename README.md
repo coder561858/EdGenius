@@ -1,4 +1,4 @@
-🚀 EdGenius
+# EdGenius
 
 Learn a new language, earn points, and spend them — An innovative way to grow your skills.
 
@@ -43,7 +43,7 @@ APIs: custom language quiz API
 
 Hosting: Vercel (frontend), Render (backend)
 
-Sponsor Technologies Used (if any):
+Sponsor Technologies Used :
 ✅ Base: Used Smart Wallet via OnchainKit to create and manage a user wallet tied to their identity
 
 ✨ Key Features

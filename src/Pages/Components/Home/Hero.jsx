@@ -84,7 +84,7 @@ const Hero = () => {
 				</div>
 			</div>
 
-			{/* Full-width Team Section */}
+			{/* Full-width Team Sections */}
 				<div id="team" className="w-full">
 				<Team />
 			</div>

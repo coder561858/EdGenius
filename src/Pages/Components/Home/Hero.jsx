@@ -34,7 +34,7 @@ const Hero = () => {
 	return (
 		<>
 			{/* Hero Section */}
-			<div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-[80vh] flex items-center justify-center pt-20">
+				<div id="hero" className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-[80vh] flex items-center justify-center pt-20 overflow-hidden">
 				{/* Decorative elements */}
 				<div className="absolute inset-0 overflow-hidden">
 					<div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-20"></div>
@@ -85,17 +85,17 @@ const Hero = () => {
 			</div>
 
 			{/* Full-width Team Section */}
-			<div className="w-full">
+				<div id="team" className="w-full">
 				<Team />
 			</div>
 
 			{/* Full-width FAQ Section */}
-			<div className="w-full">
+				<div id="faq" className="w-full">
 				<FAQ />
 			</div>
 
 			{/* Full-width Contact Section */}
-			<div className="w-full">
+				<div id="contact" className="w-full">
 				<Contact />
 			</div>
 		</>
